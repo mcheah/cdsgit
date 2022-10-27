@@ -9,7 +9,7 @@ defmethod( Init (( gs GitShell ) @key (args "") )
       ErrorCG(gs sprintf(nil "GitShell Init: %L is not a directory" gs->path) )
    )
 
-   syscmd = strcat("cd " gs->path " && git init " args)
+   syscmd = strcat("cd " gs->path " && git init " args " && git commit --allow-empty --allow-empty-message --no-edit")
 
    result=Cmd(gs syscmd)
 

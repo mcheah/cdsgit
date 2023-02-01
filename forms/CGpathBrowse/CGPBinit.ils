@@ -1,15 +1,15 @@
 /*
 Initialize a Git Repository
-CGPBinitForm()
+CGPBinitForm(gs)
 */
-procedure( CGPBinitForm()
+procedure( CGPBinitForm(gs)
 
    importSkillVar(cdsGitAppName)
-
+   ; printf("hello world")
    formTitle = sprintf(nil "%s Initialize a Repository" cdsGitAppName )
    formCB = "CGPBinitFormCB()"
 
-   CGpathBrowseForm( nil ?formTitle formTitle ?formCB formCB ?formMode "directoryOnly" ?formLabel "Select a Path in which to Initialize a Git Repository")
+   CGpathBrowseForm( gs ?formTitle formTitle ?formCB formCB ?formMode "directoryOnly" ?formLabel "Select a Path in which to Initialize a Git Repository")
 )
 
 procedure( CGPBinitFormCB()

@@ -1,5 +1,5 @@
 /*
- CGpathBrowseForm(nil )
+ CGpathBrowseForm(gs )
 
  Modes
 
@@ -17,12 +17,20 @@ procedure( CGpathBrowseForm(gs @key (grid nil) (formTitle "") (formLabel "Select
    if( !grid then
       grid = Gridder()
    )
-
+   dd = gs->dd
+   lib_path = ""
+   if( dd->type=='ddLibType then 
+      lib_path = dd->readPath
+      printf("1")
+   )
+   printf("gs %s dd %s" gs dd)
+   printf("dd->type = %s" dd->type)
+   printf("lib_path = %s" lib_path)
    sf_pathname = hiCreateStringField(
       ?name 'sf_pathname
       ?prompt ""
       ?value ""
-      ?defValue ""
+      ?defValue lib_path
       ?editable t
    )
 

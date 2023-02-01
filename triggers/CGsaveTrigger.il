@@ -7,19 +7,19 @@ procedure(CGsaveTrigger(args)
    libName  = args->libName
    viewName = args->viewName
 
-   printf("CdsGit CGsaveTrigger(): Creating png of cell\n")
+   ; printf("CdsGit CGsaveTrigger(): Creating png of cell\n")
 
    ;Create png
-   if(
-      args->cellViewType == "schematicSymbol" ||
-      args->cellViewType == "maskLayout" ||
-      args->cellViewType == "schematic"
-      then
+   ;if(
+   ;   args->cellViewType == "schematicSymbol" ||
+   ;   args->cellViewType == "maskLayout" ||
+   ;   args->cellViewType == "schematic"
+   ;   then
 
-      ;Create the ams netlist
-      hiGenerateThumbnails(?lib libName ?cell cellName ?view viewName
-         ?sizes cdsgit_png_size ?verbose t)
-   )
+    ;  ;Create the ams netlist
+   ;   hiGenerateThumbnails(?lib libName ?cell cellName ?view viewName
+   ;      ?sizes cdsgit_png_size ?verbose t)
+   ;)
 
 )
 

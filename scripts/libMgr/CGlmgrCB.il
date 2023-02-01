@@ -63,7 +63,7 @@ procedure( CGMlmgrCB(_menuName lib _c _v _f _cat)
    case( _menuName
       ;Repo
       ("CGMgui"           Gui(gs)            )
-      ("CGMinit"          CGPBinitForm()     )
+      ("CGMinit"          CGPBinitForm(gs)     )
       ("CGMstatusAll"     CGstatusAllForm()  )
       ("CGMclone"         CGcloneForm()      )
       ("CGMsetupSSH"      CGsetupSSHform()   )

@@ -3675,11 +3675,17 @@ procedure( CGpathBrowseForm(gs @key (grid nil) (formTitle "") (formLabel "Select
       grid = Gridder()
    )
 
+   lib_path = ""
+   if( dd->type==ddLibType then 
+      lib_path = dd->readPath
+   )
+   printf("lib_path = %s" lib_path)
+   printf("dd->type = %s" dd->type)
    sf_pathname = hiCreateStringField(
       ?name 'sf_pathname
       ?prompt ""
       ?value ""
-      ?defValue ""
+      ?defValue lib_path
       ?editable t
    )
 

@@ -10,7 +10,7 @@ Gridder
 git_merge_path = strcat(cdsgit_path "/cdsgit-merge")
 
 ;Debugging symbols
-GITmg_verbose = nil
+GITmg_verbose = t
 
 
 ;GUI

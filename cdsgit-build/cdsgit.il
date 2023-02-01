@@ -5483,12 +5483,21 @@ defmethod( Diff   (( instX GMobj) instY )
 
 
 defmethod( DiffAttr ((objX GMobj) objY attribute @key (isProp nil) )
+   if(attribute=="libName" then DiffLibName(objX objY ?isProp isProp)
+   else
+      attrX = GetAttr( objX attribute ?isProp isProp)
+      attrY = GetAttr( objY attribute ?isProp isProp)
+      if(objX->verbose printf("%L: %L %L %L\n" attribute attrX attrY attrX==attrY))
+      attrX == attrY
+   )
+)
 
+defmethod( DiffLibName ((objX GMobj) objY @key (isProp nil) )
+   attribute = "libName"
    attrX = GetAttr( objX attribute ?isProp isProp)
    attrY = GetAttr( objY attribute ?isProp isProp)
-   if(objX->verbose printf("%L %L %L\n" attrX attrY attrX==attrY))
-   attrX == attrY
-
+   if(objX->verbose printf("%L: %L %L %L\n" attribute attrX attrY (attrX == attrY || (attrX==objX~>obj~>cellView~>libName && attrY==objY~>obj~>cellView~>libName)))
+   attrX == attrY || (attrX==objX~>obj~>cellView~>libName && attrY==objY~>obj~>cellView~>libName)
 )
 
 defmethod( GetAttr ((obj GMobj) attribute @key (source nil) (isProp nil))
@@ -5885,9 +5894,9 @@ procedure( GMD_createInsts(diffPairs)
 procedure( GMD_createInst_func( inst diffPairs)
 
    if(inst->purpose == "pin" then
-      newInst = makeInstance( 'GMschPin  ?obj inst ?name inst->net->name ?diffPairs diffPairs )
+      newInst = makeInstance( 'GMschPin  ?obj inst ?name inst->net->name ?diffPairs diffPairs ?verbose diffPairs~>verbose )
    else
-      newInst = makeInstance( 'GMschInst ?obj inst ?name inst->name      ?diffPairs diffPairs )
+      newInst = makeInstance( 'GMschInst ?obj inst ?name inst->name      ?diffPairs diffPairs ?verbose diffPairs~>verbose )
 
       
       if(inst->prop then

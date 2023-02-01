@@ -15,7 +15,7 @@ defclass( GitShell
       (viewName @initform "")
 
       ;Dialog
-      (verbose  @initform nil @initarg verbose) ;Verbose messages
+      (verbose  @initform t @initarg verbose) ;Verbose messages
       (silent   @initform nil @initarg silent)  ;Do not display dialog boxes
 
       ;Properties
@@ -62,8 +62,8 @@ procedure( GitShell( @key (path nil) (name nil) (dd nil) (silent t) (url nil) (s
       error("Must provide a path to GitShell")
    )
 
-   gs = makeInstance( 'GitShell ?path path ?name name ?dd dd ?silent silent ?url url)
-
+   gs = makeInstance( 'GitShell ?path path ?name name ?dd dd ?silent silent ?url url ?verbose t)
+   gs->verbose = t
    ;Backup the path
    gs->pathOrig = path
 

@@ -43,11 +43,11 @@ procedure( GMD_createInsts(diffPairs)
 
    foreach(inst instsScr
       newInst = GMD_createInst_func(inst diffPairs)
-      AddDiffObj(diffPairs ?obj newInst ?group 'objsSrc)
+      AddDiffObj(diffPairs ?obj newInst ?group 'objsSrc ?verbose diffPairs~>verbose )
    )
    foreach(inst instsDst
       newInst = GMD_createInst_func(inst diffPairs)
-      AddDiffObj(diffPairs ?obj newInst ?group 'objsDst)
+      AddDiffObj(diffPairs ?obj newInst ?group 'objsDst ?verbose diffPairs~>verbose )
    )
 
    diffPairs
